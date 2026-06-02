@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blue Ridge Property Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1f3c;
+    --navy-mid: #1a3460;
+    --blue: #1e4d8c;
+    --blue-light: #2a6ab5;
+    --gold: #c8961e;
+    --gold-light: #e0ae3a;
+    --cream: #f7f4ee;
+    --off-white: #faf9f6;
+    --gray-text: #4a4a4a;
+    --gray-light: #e8e4dc;
+    --white: #ffffff;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--navy);
+    background: var(--off-white);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 68px;
+    border-bottom: 2px solid var(--gold);
+  }
+  .nav-logo {
+    font-family: var(--font-serif);
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    line-height: 1.2;
+  }
+  .nav-logo span { display: block; font-size: 0.65rem; font-family: var(--font-sans); font-weight: 300; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.875rem; font-weight: 400; letter-spacing: 0.04em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: var(--gold); color: var(--navy);
+    padding: 0.5rem 1.25rem; border-radius: 2px;
+    font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--gold-light); color: var(--navy) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    margin-top: 68px;
+    min-height: 88vh;
+    background: var(--navy);
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg-lines {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 80px);
+  }
+  .hero-accent {
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 42%;
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--blue) 100%);
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+  .hero-accent-overlay {
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 42%;
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px,
+      transparent 1px, transparent 12px
+    );
+  }
+  .hero-gold-bar {
+    position: absolute; left: 5%; top: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    opacity: 0.6;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 6rem 5%;
+    max-width: 640px;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(200,150,30,0.4);
+  }
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+  .hero-title em { color: var(--gold); font-style: normal; }
+  .hero-desc {
+    font-size: 1.05rem; font-weight: 300;
+    color: rgba(255,255,255,0.72);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+  .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 0.85rem 2rem; border-radius: 2px;
+    font-weight: 600; font-size: 0.875rem; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    padding: 0.85rem 2rem; border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.35);
+    font-weight: 400; font-size: 0.875rem; letter-spacing: 0.06em;
+    text-decoration: none; transition: border-color 0.2s, background 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .hero-stats {
+    position: absolute; bottom: 2.5rem; left: 5%; right: 5%;
+    display: flex; gap: 3rem; z-index: 2;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.5rem;
+  }
+  .hero-stat-num {
+    font-family: var(--font-serif);
+    font-size: 2rem; font-weight: 600; color: var(--gold);
+    line-height: 1;
+  }
+  .hero-stat-label {
+    font-size: 0.75rem; font-weight: 400; color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.25rem;
+  }
+
+  /* ── SECTION COMMONS ── */
+  section { padding: 6rem 5%; }
+  .section-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 600; line-height: 1.2; color: var(--navy);
+    margin-bottom: 1rem;
+  }
+  .section-intro {
+    font-size: 1.05rem; color: var(--gray-text);
+    max-width: 600px; line-height: 1.75;
+    margin-bottom: 3rem;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--cream); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5px;
+    background: var(--gray-light);
+    border: 1.5px solid var(--gray-light);
+  }
+  .service-card {
+    background: var(--white);
+    padding: 2rem 1.75rem;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--navy); }
+  .service-card:hover .service-icon { border-color: var(--gold); color: var(--gold); }
+  .service-card:hover .service-name { color: var(--white); }
+  .service-card:hover .service-desc { color: rgba(255,255,255,0.65); }
+  .service-icon {
+    width: 44px; height: 44px;
+    border: 1.5px solid var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.3rem;
+    transition: border-color 0.2s, color 0.2s;
+    color: var(--navy);
+  }
+  .service-name {
+    font-family: var(--font-serif);
+    font-size: 1.1rem; font-weight: 600;
+    margin-bottom: 0.5rem; color: var(--navy);
+    transition: color 0.2s;
+  }
+  .service-desc {
+    font-size: 0.875rem; color: var(--gray-text);
+    line-height: 1.65; transition: color 0.2s;
+  }
+
+  /* ── TRADE CAPABILITIES ── */
+  #capabilities { background: var(--navy); }
+  #capabilities .section-title { color: var(--white); }
+  #capabilities .section-intro { color: rgba(255,255,255,0.65); }
+  .trades-grid {
+    display: flex; flex-wrap: wrap; gap: 0.75rem;
+  }
+  .trade-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.85);
+    padding: 0.55rem 1.1rem;
+    font-size: 0.85rem; font-weight: 400; letter-spacing: 0.03em;
+    border-radius: 2px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .trade-pill:hover { background: rgba(200,150,30,0.15); border-color: var(--gold); color: var(--gold-light); }
+
+  /* ── MARKETS ── */
+  #markets { background: var(--off-white); }
+  .markets-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  @media(max-width: 780px) { .markets-layout { grid-template-columns: 1fr; } }
+  .markets-table { width: 100%; border-collapse: collapse; }
+  .markets-table th {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600; padding: 0 0 0.75rem;
+    border-bottom: 1px solid var(--gray-light); text-align: left;
+  }
+  .markets-table td {
+    padding: 0.85rem 0; border-bottom: 1px solid var(--gray-light);
+    font-size: 0.9rem; color: var(--gray-text);
+  }
+  .markets-table td:first-child { font-weight: 500; color: var(--navy); width: 36%; }
+  .market-tag {
+    display: inline-block; margin: 0.1rem 0.2rem;
+    background: var(--cream); border: 1px solid var(--gray-light);
+    color: var(--navy); padding: 0.2rem 0.6rem; border-radius: 2px; font-size: 0.8rem;
+  }
+  .why-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+  .why-item { display: flex; gap: 0.9rem; align-items: flex-start; }
+  .why-bullet {
+    width: 22px; height: 22px; min-width: 22px;
+    background: var(--gold); color: var(--navy);
+    font-size: 0.65rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; margin-top: 0.15rem;
+  }
+  .why-text { font-size: 0.9rem; color: var(--gray-text); line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--cream); }
+  .contact-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+  }
+  @media(max-width: 780px) { .contact-wrapper { grid-template-columns: 1fr; } }
+  .contact-detail { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+  .contact-icon {
+    width: 40px; height: 40px; min-width: 40px;
+    background: var(--navy); color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; border-radius: 2px;
+  }
+  .contact-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.2rem; }
+  .contact-value { font-size: 0.95rem; color: var(--navy); font-weight: 400; }
+  .contact-form-note {
+    background: var(--navy); padding: 2rem 2rem 2.5rem; border-left: 3px solid var(--gold);
+  }
+  .contact-form-note p {
+    color: rgba(255,255,255,0.75); font-size: 0.95rem; line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .contact-form-note .btn-primary { display: inline-block; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    padding: 2.5rem 5%;
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: gap;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: var(--font-serif);
+    font-size: 0.95rem; font-weight: 600; color: var(--white);
+  }
+  .footer-logo span { display: block; font-family: var(--font-sans); font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); font-weight: 300; margin-top: 0.15rem; }
+  .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+  /* ── SCROLL ANIMATIONS ── */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE NAV ── */
+  @media(max-width: 700px) {
+    .nav-links { display: none; }
+    .hero-stats { display: none; }
+    .hero-accent { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Blue Ridge Property Services<span>Richmond, Virginia</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#markets">Markets</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:contact@brps.pro" class="nav-cta">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-accent-overlay"></div>
+  <div class="hero-gold-bar"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Full-Service Property Maintenance</div>
+    <h1 class="hero-title">Your Single-Source<br /><em>Property Partner</em></h1>
+    <p class="hero-desc">Blue Ridge Property Services delivers comprehensive maintenance and general contracting solutions to property managers, real estate investors, and residential clients across the Southeastern and Midwestern United States.</p>
+    <div class="hero-buttons">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">9</div>
+      <div class="hero-stat-label">States Served</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">12+</div>
+      <div class="hero-stat-label">Major Markets</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">12</div>
+      <div class="hero-stat-label">Trade Disciplines</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">1</div>
+      <div class="hero-stat-label">Dedicated Ops Manager</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label fade-in">What We Do</div>
+  <h2 class="section-title fade-in">Comprehensive Property Services</h2>
+  <p class="section-intro fade-in">From routine upkeep to full-scale renovation, we handle it all under one roof — so you never have to juggle multiple vendors.</p>
+  <div class="services-grid fade-in">
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <div class="service-name">Property Maintenance</div>
+      <p class="service-desc">Ongoing upkeep, inspections, and repairs for residential properties. Preventive care that protects your investment.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔨</div>
+      <div class="service-name">Turnover & Renovation</div>
+      <p class="service-desc">Complete unit turnovers, remodels, and renovation projects of any scope or scale. Fast turnarounds to minimize vacancy.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <div class="service-name">Trade Services</div>
+      <p class="service-desc">Electrical, plumbing, HVAC, roofing, flooring, and more — experienced tradespersons across all major disciplines.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌿</div>
+      <div class="service-name">Exterior & Grounds</div>
+      <p class="service-desc">Landscaping, exterior painting, pest control, and cleaning services to keep every property looking its best.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <div class="service-name">General Contracting</div>
+      <p class="service-desc">Full general contracting services for larger projects. One point of contact, one contract, no surprises.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤝</div>
+      <div class="service-name">Ongoing Agreements</div>
+      <p class="service-desc">Flexible maintenance contracts for property managers who want reliable, recurring service at agreed-upon rates.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <div class="section-label fade-in">Trade Capabilities</div>
+  <h2 class="section-title fade-in">Every Trade. One Team.</h2>
+  <p class="section-intro fade-in">Our network of vetted and insured tradespeople covers every major discipline, so there's no job we can't handle.</p>
+  <div class="trades-grid fade-in">
+    <div class="trade-pill">Handyman Services</div>
+    <div class="trade-pill">Carpentry</div>
+    <div class="trade-pill">Interior & Exterior Painting</div>
+    <div class="trade-pill">Plumbing</div>
+    <div class="trade-pill">Electrical</div>
+    <div class="trade-pill">HVAC</div>
+    <div class="trade-pill">Landscaping</div>
+    <div class="trade-pill">Flooring</div>
+    <div class="trade-pill">Cleaning Services</div>
+    <div class="trade-pill">Pest Control</div>
+    <div class="trade-pill">Roofing</div>
+    <div class="trade-pill">General Contracting</div>
+  </div>
+</section>
+
+<!-- MARKETS -->
+<section id="markets">
+  <div class="section-label fade-in">Market Coverage</div>
+  <h2 class="section-title fade-in">Where We Operate</h2>
+  <div class="markets-layout">
+    <div class="fade-in">
+      <table class="markets-table">
+        <thead>
+          <tr><th>State</th><th>Service Areas</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Virginia</td><td><span class="market-tag">Richmond</span></td></tr>
+          <tr><td>Texas</td><td><span class="market-tag">Houston</span><span class="market-tag">Dallas</span><span class="market-tag">Fort Worth</span></td></tr>
+          <tr><td>Florida</td><td><span class="market-tag">Tampa</span><span class="market-tag">Jacksonville</span><span class="market-tag">Orlando</span></td></tr>
+          <tr><td>Georgia</td><td><span class="market-tag">Atlanta</span></td></tr>
+          <tr><td>Tennessee</td><td><span class="market-tag">Memphis</span></td></tr>
+          <tr><td>Wisconsin</td><td><span class="market-tag">Milwaukee</span></td></tr>
+          <tr><td>Illinois</td><td><span class="market-tag">Chicago</span></td></tr>
+          <tr><td>Ohio</td><td><span class="market-tag">Columbus</span><span class="market-tag">Cleveland</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="fade-in">
+      <div class="section-label" style="margin-bottom:1rem;">Why Choose Blue Ridge</div>
+      <ul class="why-list">
+        <li class="why-item"><div class="why-bullet">✓</div><div class="why-text">Single-source vendor for all property maintenance — light repairs to full renovations</div></li>
+        <li class="why-item"><div class="why-bullet">✓</div><div class="why-text">Multi-state footprint with local crews ensures fast response times and regional knowledge</div></li>
+        <li class="why-item"><div class="why-bullet">✓</div><div class="why-text">Dedicated operations manager assigned to every client account</div></li>
+        <li class="why-item"><div class="why-bullet">✓</div><div class="why-text">Vetted and insured service providers across all trades</div></li>
+        <li class="why-item"><div class="why-bullet">✓</div><div class="why-text">Flexible scoping for one-time projects and ongoing maintenance agreements</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label fade-in">Get In Touch</div>
+  <h2 class="section-title fade-in">Let's Discuss Your Needs</h2>
+  <div class="contact-wrapper fade-in">
+    <div>
+      <div class="contact-detail">
+        <div class="contact-icon">✉</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value"><a href="mailto:contact@brps.pro" style="color:var(--navy);text-decoration:none;">contact@brps.pro</a></div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Headquarters</div>
+          <div class="contact-value">Richmond, Virginia</div>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon">🌎</div>
+        <div>
+          <div class="contact-label">Service Region</div>
+          <div class="contact-value">Southeastern &amp; Midwestern United States</div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-note">
+      <p>We welcome the opportunity to discuss how Blue Ridge Property Services can support your property management needs. Whether you're looking for a one-time project or an ongoing maintenance agreement, our team is ready to help.</p>
+      <p>Reach out via email and a member of our operations team will respond promptly to discuss your requirements.</p>
+      <a href="mailto:contact@brps.pro" class="btn-primary">Email Us Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Blue Ridge Property Services, Inc.<span>Richmond, Virginia</span></div>
+  <div class="footer-copy">© 2025 Blue Ridge Property Services, Inc. All rights reserved.</div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
