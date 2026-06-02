@@ -1,16 +1,38 @@
-## Hi there 👋
+# Blue Ridge Property Services — Company Website
 
-<!--
-**6rps/6rps** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Official website for **Blue Ridge Property Services, Inc.**, a full-service property maintenance and general contracting company based in Richmond, Virginia.
 
-Here are some ideas to get you started:
+🌐 **Live site:** [https://yourusername.github.io](https://6rps.github.io)
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+---
+
+## About
+
+This is a single-page static website built with plain HTML, CSS, and JavaScript — no frameworks or dependencies required. It is hosted for free via [GitHub Pages](https://pages.github.com/).
+
+## Pages & Sections
+
+- **Hero** — Company intro and key stats
+- **Services** — Overview of primary and additional services
+- **Trade Capabilities** — Full list of trade disciplines
+- **Market Coverage** — States and cities served, plus key differentiators
+- **Contact** — Office location and email contact
+
+## Tech Stack
+
+- HTML5
+- CSS3 (custom properties, CSS Grid, Flexbox)
+- Vanilla JavaScript (Intersection Observer for scroll animations)
+- Google Fonts (Playfair Display, DM Sans)
+
+## Deployment
+
+This site is deployed via GitHub Pages from the `main` branch. Any push to `main` automatically updates the live site.
+
+To run locally, simply open `index.html` in a browser — no build step needed.
+
+## Contact
+
+📧 contact@brps.pro  
+📍 Richmond, Virginia  
+🌎 Serving the Southeastern & Midwestern United States
