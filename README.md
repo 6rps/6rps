@@ -2,7 +2,7 @@
 
 Official website for **Blue Ridge Property Services, Inc.**, a full-service property maintenance and general contracting company based in Richmond, Virginia.
 
-🌐 **Live site:** [https://yourusername.github.io](https://6rps.github.io)
+🌐 **Live site:** [https://6rps.github.io](https://6rps.github.io)
 
 ---
 
