@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Privacy Policy | Blue Ridge Property Services</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%230d1f3c'/><polygon points='32,10 52,28 52,54 12,54 12,28' fill='none' stroke='%23c8961e' stroke-width='3' stroke-linejoin='round'/><rect x='24' y='36' width='16' height='18' fill='%23c8961e' rx='1'/><rect x='20' y='27' width='24' height='3' fill='%23c8961e' rx='1'/></svg>" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%230d1f3c'/><g transform='translate(10,4) scale(0.0571)'><g fill='%23ffffff'><polygon points='544,0 624,0 624,343 544,288'/><polygon points='0,316 385,48 770,316 770,445 385,177 0,445'/></g><polygon fill='%233e7cb1' points='0,588 385,320 770,588 770,717 385,449 0,717'/><polygon fill='%238fb6d4' points='0,860 385,592 770,860 770,989 385,721 0,989'/></g></svg>" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -77,18 +77,58 @@
   .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--gold-light); }
   .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+  /* ── LOGO MARKS ── */
+  .nav-logo { display: flex; align-items: center; gap: 0.7rem; }
+  .nav-mark { height: 36px; width: auto; display: block; }
+  .footer-brand { display: flex; align-items: center; gap: 0.75rem; }
+  .footer-mark { height: 34px; width: auto; display: block; }
+
+  /* ── RESPONSIVE NAV FIX ── */
+  nav { gap: 1rem; }
+  .nav-logo { min-width: 0; }
+  .nav-logo div { min-width: 0; }
+  .nav-cta { white-space: nowrap; flex-shrink: 0; }
+  @media(max-width: 600px) {
+    .nav-logo { font-size: 0.88rem; gap: 0.5rem; }
+    .nav-logo span { font-size: 0.56rem; letter-spacing: 0.1em; }
+    .nav-mark { height: 28px; }
+    .nav-cta { padding: 0.45rem 0.8rem; font-size: 0.68rem; letter-spacing: 0.04em; }
+  }
+  @media(max-width: 380px) {
+    .nav-logo span { display: none; }
+  }
+
+  /* ── MOBILE MENU ── */
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem 0 0.5rem 0.5rem; flex-shrink: 0; }
+  .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--gold); margin: 5px 0; transition: transform 0.25s, opacity 0.25s; }
+  @media(max-width: 700px) {
+    .nav-toggle { display: block; }
+    .nav-links {
+      display: none; position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--navy); flex-direction: column; gap: 0;
+      padding: 0.4rem 0 0.9rem; border-bottom: 2px solid var(--gold);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { padding: 0.7rem 5%; }
+    .nav-links a { font-size: 0.95rem; display: block; }
+  }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">Blue Ridge Property Services<span>Richmond, Virginia</span></a>
-  <ul class="nav-links">
+  <a href="/" class="nav-logo"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 770 990' role='img' aria-label='Blue Ridge Property Services logo'><g fill='%23ffffff'><polygon points='544,0 624,0 624,343 544,288'/><polygon points='0,316 385,48 770,316 770,445 385,177 0,445'/></g><polygon fill='%233e7cb1' points='0,588 385,320 770,588 770,717 385,449 0,717'/><polygon fill='%238fb6d4' points='0,860 385,592 770,860 770,989 385,721 0,989'/></svg>" alt="Blue Ridge Property Services logo" class="nav-mark" /><div>Blue Ridge Property Services<span>Richmond, Virginia</span></div></a>
+  <ul class="nav-links" id="navLinks">
     <li><a href="/#services">Services</a></li>
     <li><a href="/#markets">Markets</a></li>
-    <li><a href="/#contact">Contact</a></li>
+    <li><a href="/contact">Contact</a></li>
   </ul>
-  <a href="mailto:contact@brps.pro" class="nav-cta">Get in Touch</a>
+  <a href="/contact" class="nav-cta">Get in Touch</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <div class="page-header">
@@ -108,7 +148,7 @@
     <h2><span class="num">1.</span>Information We Collect</h2>
     <p>We may collect the following types of personal information:</p>
     <ul>
-      <li><strong>Contact Information:</strong> Name, phone number, email address, and mailing address.</li>
+      <li><strong>Contact Information:</strong> Name, phone number, email address, and mailing address, including information you submit through the contact form on our website.</li>
       <li><strong>Business Information:</strong> Company name, property addresses, and service requirements.</li>
       <li><strong>SMS/MMS Opt-In Data:</strong> Phone number, consent timestamp, and opt-in method when you agree to receive text messages from us.</li>
       <li><strong>Communications:</strong> Records of SMS conversations, emails, and other correspondence with BRPS.</li>
@@ -122,7 +162,7 @@
     <ul>
       <li>To schedule, coordinate, and deliver property maintenance and contracting services.</li>
       <li>To send appointment confirmations, reminders, and work order updates via SMS.</li>
-      <li>To communicate with vendors, subcontractors, and service providers regarding work opportunities.</li>
+      <li>To communicate with service providers and partnered technicians regarding work opportunities.</li>
       <li>To respond to inquiries and provide customer support.</li>
       <li>To manage our business operations and maintain service records.</li>
       <li>To comply with legal and regulatory obligations.</li>
@@ -131,13 +171,13 @@
 
   <div class="section-block">
     <h2><span class="num">3.</span>SMS / MMS Messaging Program</h2>
-    <p>Blue Ridge Property Services, Inc. operates an SMS/MMS messaging program for business communications, including appointment scheduling, work order updates, reminders, client communications, and vendor/subcontractor outreach.</p>
+    <p>Blue Ridge Property Services, Inc. operates an SMS/MMS messaging program for business communications, including appointment scheduling, work order updates, reminders, client communications, and service provider and partnered technician outreach.</p>
 
     <div class="highlight-box">
       <p>No mobile information — including SMS opt-in data and consent — will be shared with third parties or affiliates for marketing or promotional purposes. All text messaging originator opt-in data and consent information will not be shared with any third parties.</p>
     </div>
 
-    <p><strong>Opt-In:</strong> By providing your phone number and consenting to receive SMS messages from BRPS — whether through a signed service agreement, vendor onboarding form, or direct verbal or written confirmation — you agree to receive SMS/MMS communications from us. Message frequency varies based on your engagement with our services.</p>
+    <p><strong>Opt-In:</strong> By providing your phone number and consenting to receive SMS messages from BRPS — whether through the contact form on our website, a signed service agreement, a service provider onboarding form, or direct verbal or written confirmation — you agree to receive SMS/MMS communications from us. Message frequency varies based on your engagement with our services.</p>
     <p><strong>Opt-Out:</strong> You may opt out of receiving SMS messages at any time by replying <strong>STOP</strong> to any message we send. After opting out, you will receive a single confirmation message and no further texts will be sent unless you re-subscribe.</p>
     <p><strong>Help:</strong> Reply <strong>HELP</strong> to any SMS message to receive assistance, or contact us directly at <a href="mailto:contact@brps.pro">contact@brps.pro</a> or call <a href="tel:+18048001160">(804) 800-1160</a>.</p>
     <p><strong>Message and Data Rates:</strong> Standard message and data rates may apply depending on your mobile carrier plan.</p>
@@ -148,7 +188,7 @@
     <h2><span class="num">4.</span>How We Share Your Information</h2>
     <p>We do not sell your personal information. We do not share your information with third parties for their own marketing purposes. We may share information in limited circumstances:</p>
     <ul>
-      <li><strong>Service Providers:</strong> We may share information with third-party vendors and technology providers who assist us in delivering services, including SMS delivery platforms. These parties are contractually obligated to protect your information and may not use it for any other purpose.</li>
+      <li><strong>Service Providers:</strong> We may share information with third-party technology and platform providers who assist us in delivering services, including SMS delivery platforms. These parties are contractually obligated to protect your information and may not use it for any other purpose.</li>
       <li><strong>Legal Compliance:</strong> We may disclose information when required by law, court order, or government authority.</li>
       <li><strong>Business Transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction.</li>
     </ul>
@@ -202,13 +242,31 @@
 </div>
 
 <footer>
-  <div class="footer-logo">Blue Ridge Property Services, Inc.<span>Richmond, Virginia</span></div>
+  <div class="footer-brand"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 770 990' role='img' aria-label='Blue Ridge Property Services logo'><g fill='%23ffffff'><polygon points='544,0 624,0 624,343 544,288'/><polygon points='0,316 385,48 770,316 770,445 385,177 0,445'/></g><polygon fill='%233e7cb1' points='0,588 385,320 770,588 770,717 385,449 0,717'/><polygon fill='%238fb6d4' points='0,860 385,592 770,860 770,989 385,721 0,989'/></svg>" alt="" class="footer-mark" /><div class="footer-logo">Blue Ridge Property Services, Inc.<span>Richmond, Virginia</span></div></div>
   <div class="footer-links">
+    <a href="/contact">Contact</a>
     <a href="/privacy">Privacy Policy</a>
     <a href="/sms">SMS Terms</a>
   </div>
   <div class="footer-copy">© 2025 Blue Ridge Property Services, Inc. All rights reserved.</div>
 </footer>
 
+<script>
+(function () {
+  var btn = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (!btn || !links) return;
+  function setOpen(open) {
+    links.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    btn.children[0].style.transform = open ? 'translateY(7px) rotate(45deg)' : '';
+    btn.children[1].style.opacity = open ? '0' : '';
+    btn.children[2].style.transform = open ? 'translateY(-7px) rotate(-45deg)' : '';
+  }
+  btn.addEventListener('click', function () { setOpen(!links.classList.contains('open')); });
+  links.addEventListener('click', function (e) { if (e.target.tagName === 'A') setOpen(false); });
+})();
+</script>
 </body>
 </html>
